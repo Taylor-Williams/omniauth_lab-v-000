@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resrouce :users
+  resources :users
   root 'welcome#home'
   get '/auth/facebook/callback' => 'sessions#create'
 
