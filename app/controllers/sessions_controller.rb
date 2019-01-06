@@ -6,7 +6,7 @@ class SessionsController < ApplicationController
     if user = User.find_by(email: @auth['info']['email'])
       @user = user
     else
-      @user = User.new(email: @auth['info']['email'], name: @auth['info']['name'], uid: @auth['uid'])
+      @user = User.create(email: @auth['info']['email'], name: @auth['info']['name'], uid: @auth['uid'])
     end
     session[:user_id] = @user.id
     binding.pry
