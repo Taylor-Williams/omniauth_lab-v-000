@@ -2,6 +2,7 @@ class SessionsController < ApplicationController
 
   def create
     @auth = request.env['omniauth.auth']
+    binding.pty
     if user = User.find_by(email: @auth['info']['email'])
       @user = user
     else
