@@ -9,6 +9,7 @@ class SessionsController < ApplicationController
       @user = User.new(email: @auth['info']['email'], name: @auth['info']['name'], uid: @auth['uid'])
     end
     session[:user_id] = @user.id
+    binding.pry
     render :create
   end
 
