@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
       @user = User.new(email: u_hash['info']['email'], name: u_hash['info']['name'], uid: u_hash['uid'])
     end
     session[:user_id] = @user.id
-    redirect_to root_path
+    render :create
   end
 
 end
