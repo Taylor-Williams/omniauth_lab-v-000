@@ -2,7 +2,7 @@ class SessionsController < ApplicationController
 
   def create
     @auth = request.env['omniauth.auth']
-    if user = User.find_by(email: @auth['info']['email'])
+    if user = User.find_by(email: @auth['uid'])
       @user = user
     else
       @user = User.create(email: @auth['info']['email'], name: @auth['info']['name'], uid: @auth['uid'])
