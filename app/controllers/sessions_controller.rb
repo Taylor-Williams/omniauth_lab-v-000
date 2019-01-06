@@ -1,11 +1,11 @@
 class SessionsController < ApplicationController
 
   def create
-    u_hash = request.env['omniauth.auth']
-    if user = User.find_by(email: u_hash['info']['email'])
+    @auth = request.env['omniauth.auth']
+    if user = User.find_by(email: @auth['info']['email'])
       @user = user
     else
-      @user = User.new(email: u_hash['info']['email'], name: u_hash['info']['name'], uid: u_hash['uid'])
+      @user = User.new(email: @auth['info']['email'], name: @auth['info']['name'], uid: @auth['uid'])
     end
     session[:user_id] = @user.id
     render :create
